@@ -2,18 +2,18 @@ import axios from "axios";
 
 const getPythonData = async (query) => {
   try {
-    // Aponta para a porta 5000 local onde seu Flask está rodando
-    const response = await axios.post("http://127.0.0.1:5000/perguntar", {
-      mensagem: query // Mapeia para a chave correta usada no back-end
+    // IMPORTANTE: Garanta o "/perguntar" no final da URL do Render
+    const response = await axios.post("https://assistente-gemini-dados.onrender.com/perguntar", {
+      mensagem: query 
     });
 
     console.log(response.data);
     
-    // Retorna a resposta contendo o texto gerado pela API
+    // Retorna o campo correto da resposta do Flask
     return response.data.resposta; 
   } catch (error) {
-    console.error("Erro de conexão com o Flask:", error);
-    return "Desculpe, ocorreu um erro ao processar sua pergunta.";
+    console.error("Erro de conexão com o Render:", error);
+    return "Desculpe, ocorreu um erro ao processar sua pergunta com o servidor remoto.";
   }
 };
 
