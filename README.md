@@ -1,4 +1,4 @@
-# 📊 Assistente de Carreiras e Mercado de Dados (RAG + Gemini)
+# 📊 Assistente RAG + Gemini focado em Dados
 
 Este é um sistema inteligente de busca semântica e resposta estruturada baseado na arquitetura **RAG (Retrieval-Augmented Generation)**. O objetivo principal do projeto é atuar como um assistente especializado para tirar dúvidas sobre o mercado de dados, mapeando papéis (Engenharia, Ciência, Análise de Dados e MLOps), competências técnicas (Hard Skills), habilidades comportamentais (Soft Skills) e infraestrutura tecnológica moderna.
 
