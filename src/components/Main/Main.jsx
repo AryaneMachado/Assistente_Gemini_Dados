@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
-import getPythonData from "../../config/api_python"; // Importando do seu arquivo correto!
+import getPythonData from "../../config/api_python";
 
 const Main = () => {
     const [input, setInput] = useState("");
@@ -10,7 +10,6 @@ const Main = () => {
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("");
 
-    // Função para limpar o chat e resetar a tela
     const newChat = () => {
         setLoading(false);
         setShowResult(false);
@@ -31,7 +30,6 @@ const Main = () => {
         // Invoca a busca semântica + RAG
         const response = await getPythonData(query);
 
-        // Tratamento de negrito (transforma os asteriscos ** em tags html <b>)
         let responseArray = response.split("**");
         let formatedResponse = "";
         for (let i = 0; i < responseArray.length; i++) {
@@ -42,7 +40,6 @@ const Main = () => {
             }
         }
 
-        // Corrige quebras de linha normais para HTML
         let finalResponse = formatedResponse.replace(/\n/g, "<br />");
         
         setResultData(finalResponse);
@@ -50,12 +47,10 @@ const Main = () => {
         setInput("");
     };
 
-    // Monitora os cliques nos cards de sugestões rápidas
     const handleCardClick = (text) => {
         onSentApi(text);
     };
 
-    // Envia o prompt ao apertar Enter no teclado
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             onSentApi();
@@ -109,7 +104,6 @@ const Main = () => {
                                     <hr /><hr /><hr />
                                 </div>
                             ) : (
-                                /* Correção do dangerouslySetInnerHTML do roteiro do PDF */
                                 <p dangerouslySetInnerHTML={{ __html: resultData }} />
                             )}
                         </div>

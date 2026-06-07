@@ -2,7 +2,6 @@ import axios from "axios";
 
 const getPythonData = async (query) => {
   try {
-    // IMPORTANTE: Garanta o "/perguntar" no final da URL do Render
     const response = await axios.post("https://assistente-gemini-dados.onrender.com/perguntar", {
       mensagem: query 
     });

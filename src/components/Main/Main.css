@@ -3,7 +3,6 @@
     min-height: 100vh;
     padding-bottom: 15vh;
     position: relative;
-    /* Gradiente linear suave: começa em cinza-gelo e desce para um rosa pastel bem sutil */
     background: linear-gradient(180deg, #f7fafc 0%, #fff5f7 100%);
 }
 
@@ -13,7 +12,7 @@
     justify-content: space-between;
     font-size: 22px;
     padding: 20px;
-    color: #d81b60; /* Rosa Principal no título do topo */
+    color: #d81b60;
     font-weight: 600;
 }
 
@@ -34,12 +33,11 @@
 .main .greet {
     margin: 40px 30px;
     font-size: 44px;
-    color: #cbd5e0; /* Cinza médio para o texto secundário */
+    color: #cbd5e0;
     font-weight: 500;
     margin-bottom: 30px;
 }
 
-/* Gradiente moderno em tons de Rosa e Cinza Platinum para a saudação */
 .main .greet span {
     background: -webkit-linear-gradient(16deg, #d81b60, #f06292);
     -webkit-background-clip: text;
@@ -56,8 +54,8 @@
 .main .card {
     height: 200px;
     padding: 20px;
-    background-color: #f7fafc; /* Fundo cinza bem limpo e suave */
-    border: 1px solid #e2e8f0;   /* Borda cinza neutra */
+    background-color: #f7fafc; 
+    border: 1px solid #e2e8f0;  
     border-radius: 12px;
     position: relative;
     cursor: pointer;
@@ -65,7 +63,7 @@
 }
 
 .main .card p {
-    color: #2d3748; /* Texto em grafite escuro */
+    color: #2d3748; 
     font-size: 16px;
     font-weight: 500;
     line-height: 1.4;
@@ -82,7 +80,6 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* Efeito Hover nos cards: fundo rosa sutil e borda rosa marcante */
 .main .card:hover {
     background-color: #fff5f7;
     border-color: #f06292;
@@ -99,13 +96,12 @@
     margin: auto;
 }
 
-/* Caixa de pesquisa neutra com foco em rosa */
 .search-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    background-color: #edf2f7; /* Fundo cinza suave */
+    background-color: #edf2f7;
     padding: 12px 25px;
     border-radius: 50px;
     border: 1px solid #e2e8f0;
@@ -114,7 +110,7 @@
 
 .search-box:focus-within {
     background-color: #ffffff;
-    border-color: #d81b60; /* Borda rosa ao digitar */
+    border-color: #d81b60; 
     box-shadow: 0 0 0 2px rgba(216, 27, 96, 0.15);
 }
 
@@ -142,10 +138,10 @@
     margin: 15px auto;
     text-align: center;
     font-weight: 400;
-    color: #718096; /* Cinza para informações secundárias */
+    color: #718096; 
 }
 
-/* Área do resultado da conversa */
+
 .result {
     padding: 0px 5%;
     max-height: 65vh;
@@ -157,7 +153,7 @@
 }
 
 .result::-webkit-scrollbar-thumb {
-    background-color: #fed7e2; /* Scrollbar rosa clarinho */
+    background-color: #fed7e2;
     border-radius: 10px;
 }
 
@@ -166,10 +162,10 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    background-color: #f7fafc; /* Box cinza para a pergunta do usuário */
+    background-color: #f7fafc; 
     padding: 15px;
     border-radius: 8px;
-    border-left: 4px solid #cbd5e0; /* Detalhe lateral em cinza */
+    border-left: 4px solid #cbd5e0; 
 }
 
 .result-title p {
@@ -197,7 +193,6 @@
     color: #2d3748;
 }
 
-/* Efeito de Carregamento (Loader) animado em tons de rosa */
 .loader {
     width: 100%;
     display: flex;

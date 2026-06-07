@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 # Carrega o arquivo .env
 load_dotenv()
 
-# ADICIONE ESTA LINHA AQUI: Garante que o pacote antigo ache a chave para gerar os embeddings
 generativeai.configure(api_key=os.environ.get('GEMINI_API_KEY'))
 
 model_embedding = 'models/gemini-embedding-001'
@@ -23,11 +22,10 @@ def gerarBuscarConsulta(consulta, dataset):
     produtos_escalares = np.dot(np.stack(dataset["Embeddings"]), embedding_consulta['embedding'])
     indice = np.argmax(produtos_escalares)
     
-    # Mantendo o 'Conteúdo' com acento que funcionou na sua planilha
     return dataset.iloc[indice]['Conteúdo']
 
 def melhorarResposta(inputText):
-    # Inicializa o cliente usando a chave do seu .env
+    # Inicializa o cliente usando a chave do .env
     client = genai.Client(
         api_key=os.environ.get("GEMINI_API_KEY"),
     )

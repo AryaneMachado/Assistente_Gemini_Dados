@@ -14,8 +14,7 @@ if not chave_secreta:
 
 generativeai.configure(api_key=chave_secreta)
 
-# --- CONFIGURAÇÃO DA SUA NOVA PLANILHA ---
-# ID extraído do link que você enviou
+# Extraído planilha Google Sheets
 id_planilha_nova = '1NvsIfMqt539NSN0p_w-x8T62i5JEJ17jzhrWLsAUGBA'
 csv_url = f'https://docs.google.com/spreadsheets/d/{id_planilha_nova}/export?format=csv'
 
@@ -42,13 +41,12 @@ def gerarBuscarConsulta(consulta, dataset):
         task_type="retrieval_query",
     )
     
-    # IMPORTANTE: Aqui também mudamos para 'Conteudo' (sem acento) para bater com sua planilha
     produtos_escalares = np.dot(np.stack(dataset["Embeddings"]), embedding_consulta['embedding'])
     indice = np.argmax(produtos_escalares)
     return dataset.iloc[indice]['Conteúdo']
 
-# --- PROCESSAMENTO ---
-# Ajustado para usar row["Conteudo"] sem acento, exatamente como está na sua tabela
+# Processamento
+
 print("\nGerando embeddings... Isso pode levar alguns segundos dependendo do tamanho da base.")
 df["Embeddings"] = df.apply(lambda row: gerarEmbeddings(row["Titulo"], row["Conteúdo"]), axis=1)
 

@@ -5,7 +5,6 @@ import os
 import google.generativeai as generativeai
 from dotenv import load_dotenv
 
-# Importando as funções do arquivo que criamos
 from geminiFunctions import gerarBuscarConsulta, melhorarResposta
 
 load_dotenv()
@@ -13,7 +12,6 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# Garante a configuração na inicialização do Flask também
 chave_secreta = os.getenv('GEMINI_API_KEY')
 generativeai.configure(api_key=chave_secreta)
 
