@@ -20,17 +20,22 @@ generativeai.configure(api_key=chave_secreta)
 with open('datasetEmbeddings.pkl', 'rb') as f:
     modeloEmbeddings = pickle.load(f)
 
-# --- ROTA HOME (Pedida no novo roteiro) ---
+# @app.route("/")
+# def home():
+#     consulta = "O que faz um engenheiro de dados?"
+#     resposta = gerarBuscarConsulta(consulta, modeloEmbeddings)
+#     prompt = f"Consulta: {consulta} Resposta: {resposta}"
+    
+#     response = melhorarResposta(prompt)
+#     return response
+
 @app.route("/")
 def home():
-    consulta = "O que faz um engenheiro de dados?"  # Alterado para testar o RAG com dados reais!
-    resposta = gerarBuscarConsulta(consulta, modeloEmbeddings)
-    prompt = f"Consulta: {consulta} Resposta: {resposta}"
-    
-    response = melhorarResposta(prompt)
-    return response
+    return jsonify({
+        "status": "online",
+        "mensagem": "Back-end do Assistente de Dados rodando com sucesso no Render!"
+    }), 200
 
-# --- ROTA DA API (Para receber perguntas dinâmicas do front-end) ---
 @app.route('/perguntar', methods=['POST'])
 def perguntar():
     dados = request.get_json()
@@ -41,13 +46,10 @@ def perguntar():
     pergunta_usuario = dados['mensagem']
     
     try:
-        # 1. Busca o contexto na planilha
         conteudo_recuperado = gerarBuscarConsulta(pergunta_usuario, modeloEmbeddings)
         
-        # 2. Junta a pergunta com o contexto para o RAG
         prompt_rag = f"Consulta: {pergunta_usuario} Resposta: {conteudo_recuperado}"
         
-        # 3. Melhora a resposta com o modelo generativo
         resposta_final = melhorarResposta(prompt_rag)
         
         return jsonify({"resposta": resposta_final}), 200
